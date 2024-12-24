@@ -1,0 +1,37 @@
+[workspace.package]
+version = "0.1.0"
+authors = ["Synthonyx Technologies Ltd <admin@synthonyx.com>"]
+description = "A service in Rust"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/synthonyx/service"
+# TODO: Create page for project
+# homepage = "https://synthonyx.com/service"
+
+[workspace]
+resolver = "2"
+members = [
+    "app",
+    "business/rtm-greeter",
+    "runtime",
+    "storage",
+    "foundation",
+    "transport",
+]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace.dependencies]
+jsonrpsee = { version = "0.24.7", features = ["client-core", "macros", "server"] }
+tokio = { version = "1.36.0", features = [
+    "macros",
+    "rt-multi-thread",
+    "signal",
+] }
+
+# Project dependencies
+rtm-greeter = { path = "./business/rtm-greeter" }
+runtime = { path = "./runtime" }
+storage = { path = "./storage" }
+foundation = { path = "./foundation" }
+transport = { path = "./transport" }
