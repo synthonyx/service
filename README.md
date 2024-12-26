@@ -47,3 +47,12 @@ Throughout the course, you will delve into advanced Rust topics, such as Trait d
 By using this starter kit and completing the accompanying course, you'll be well-equipped to build scalable and maintainable services using Rust.
 
 ## Structure
+
+- `app` contains crates producing binaries, such as the service and tooling.
+- `business` contains business logic modules for runtimes.
+- `foundation` contains foundational shared code.
+- `runtime` contains the final runtime for the service
+- `storage` contains crates for interaction with storage mechanisms.
+- `transport` contains transport crates, for interacting with the outside world (JsonRPC, REST API, etc).
+
+While the course and wiki are being developed, the documentation of each part should give a good overview of how parts are connected with each other.

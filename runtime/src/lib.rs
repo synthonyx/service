@@ -13,18 +13,24 @@ impl foundation::Config for Runtime {
     type Origin = ();
 }
 
+// Implement the system runtime module for health check support.
+impl rtm_system::Config for Runtime {
+    const RTM_ID: &'static str = "SYSTEM";
+}
+
 // Implement the Config trait of each runtime module that will be enabled for the runtime.
 
 // Enable rtm_greeter by implementing the Config trait.
 impl rtm_greeter::Config for Runtime {
-    const RTM_ID: &'static str = "RTM_UPPER";
+    const RTM_ID: &'static str = "UPPER";
     type Times = ConstUsize<3>;
 }
 
-/// Alias for easier composing of GreetCalls.
+/// Aliases for easier composing of calls.
+pub type SystemHealthCheckCall = rtm_system::HealthCheckCall<Runtime>;
 pub type GreeterGreetCall = GreetCall<Runtime>;
 
-/// Alias for easier compising of GreetResponse.
+/// Aliases for easier compising of responses.
 pub type GreeterGreetResponse = GreetResponse<Runtime>;
 
 #[cfg(test)]
@@ -33,6 +39,8 @@ mod tests {
 
     #[test]
     fn runtime_works() {
+        assert!(SystemHealthCheckCall::new().dispatch(()).is_ok());
+
         let result = GreeterGreetCall::new("Luna".into()).dispatch(()).unwrap();
         assert_eq!(
             result,

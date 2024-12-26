@@ -689,11 +689,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "rtm-system"
+version = "0.1.0"
+dependencies = [
+ "foundation",
+]
+
+[[package]]
 name = "runtime"
 version = "0.1.0"
 dependencies = [
  "foundation",
  "rtm-greeter",
+ "rtm-system",
 ]
 
 [[package]]

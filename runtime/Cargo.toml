@@ -11,4 +11,5 @@ repository.workspace = true
 
 [dependencies]
 rtm-greeter = { workspace = true }
+rtm-system = { workspace = true }
 foundation = { workspace = true }
